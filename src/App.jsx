@@ -1,34 +1,87 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [selectedPlayer, setSelectedPlayer] = useState('');
+
+  const resp = [
+    {
+      name: "Petra",
+      notesWritten: 1,
+      lastWrote: false
+    },
+    {
+      name: "Alex",
+      notesWritten: 1,
+      lastWrote: true
+    },
+    {
+      name: "Roli",
+      notesWritten: 1,
+      lastWrote: false
+    },
+    {
+      name: "Misi",
+      notesWritten: 0,
+      lastWrote: false
+    },
+    {
+      name: "Javi",
+      notesWritten: 0,
+      lastWrote: false
+    }
+  ];
+
+  const weights = resp.map(person => {
+    return {
+      name: person.name,
+      weight: 1 / (person.notesWritten + 1)
+    }
+  });
+  const weightSum = weights.map(weight => weight.weight).reduce((acc, curr) => acc + curr);
+  const probabilities = weights.map(weight => {
+    return {
+      name: weight.name,
+      probability: weight.weight / weightSum
+    }
+  })
+
+  let backgroundExpArr = [];
+  let currChance = 0;
+  probabilities.forEach((probability, index) => {
+    if (index !== 0) {
+      backgroundExpArr.push(`var(--color-${probability.name.toLowerCase()}) ${currChance}deg`);
+    }
+
+    if (index !== probabilities.length - 1) {
+      backgroundExpArr.push(`var(--color-${probability.name.toLowerCase()}) ${currChance + (360 * probability.probability)}deg`);
+    }
+
+    currChance += 360 * probability.probability;
+  });
+
+  const selectNextNoteTaker = () => {
+    const random = Math.random();
+    let cumulativeProbability = 0;
+
+    for (let player of probabilities) {
+      cumulativeProbability += player.probability;
+      if (random < cumulativeProbability) {
+        return player.name;
+      }
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='asd' style={{background: `conic-gradient(${backgroundExpArr})`}}>
+      <div className='stats'>{resp.map((person, i) => (
+        <div key={i}>{person.name} ennyiszer írt: {person.notesWritten}</div>
+      ) )}</div>
+
+      <div className='randomize' onClick={() => {setSelectedPlayer(selectNextNoteTaker())}}>SORSOLJ!</div>
+      <div className='next-note-taker'>Következő jegyzetelő: {selectedPlayer}</div>
+    </div>
   )
 }
 
