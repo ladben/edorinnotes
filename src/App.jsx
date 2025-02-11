@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css'
+import FortuneWheel from './FortuneWheel';
 
 function App() {
 
@@ -74,14 +75,15 @@ function App() {
   }
 
   return (
-    <div className='asd' style={{background: `conic-gradient(${backgroundExpArr})`}}>
-      <div className='stats'>{resp.map((person, i) => (
-        <div key={i}>{person.name} ennyiszer írt: {person.notesWritten}</div>
-      ) )}</div>
+    // <div className='asd' style={{background: `conic-gradient(${backgroundExpArr})`}}>
+    //   <div className='stats'>{resp.map((person, i) => (
+    //     <div key={i}>{person.name} ennyiszer írt: {person.notesWritten}</div>
+    //   ) )}</div>
 
-      <div className='randomize' onClick={() => {setSelectedPlayer(selectNextNoteTaker())}}>SORSOLJ!</div>
-      <div className='next-note-taker'>Következő jegyzetelő: {selectedPlayer}</div>
-    </div>
+    //   <div className='randomize' onClick={() => {setSelectedPlayer(selectNextNoteTaker())}}>SORSOLJ!</div>
+    //   <div className='next-note-taker'>Következő jegyzetelő: {selectedPlayer}</div>
+    // </div>
+    <FortuneWheel />
   )
 }
 
