@@ -13,47 +13,46 @@ const FortuneWheel = () => {
       <div className="flex justify-center items-center h-screen">
         <PieChart width={400} height={400}>
           {/* Outer border for the pie chart (acts as a border layer) */}
-          <Pie
+          {/* <Pie
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={110} // Slightly larger than the actual pie
-            outerRadius={160} // This acts as a border
+            innerRadius={80} // Slightly larger than the actual pie
+            outerRadius={150} // This acts as a border
             fill="none"
             stroke="black"
-            strokeWidth={8} // Thick black stroke
-          />
-  
-          {/* Dotted border using another Pie chart */}
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={162} // Position it just outside the black border
-            outerRadius={165} // Thin ring for dots
-            fill="none"
-            stroke="yellow"
-            strokeWidth={6} // Dots size
-            strokeDasharray="2 10" // Creates the dotted effect
-            strokeLinecap="round"
-          />
+            strokeWidth={40} // Thick black stroke
+          /> */}
   
           {/* Main Pie Chart */}
           <Pie
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={80}
+            innerRadius={0}
             outerRadius={150}
-            paddingAngle={5}
+            stroke="black"
+            strokeWidth={10}
             dataKey="value"
-            stroke="#fff"
-            strokeWidth={4}
           >
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.color} />
             ))}
           </Pie>
+
+          {/* Dotted border using another Pie chart */}
+          {/* <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={0} // Position it just outside the black border
+            outerRadius={150} // Thin ring for dots
+            fill="none"
+            stroke="yellow"
+            strokeWidth={10} // Dots size
+            strokeDasharray="10 40" // Creates the dotted effect
+            strokeLinecap="round"
+          /> */}
         </PieChart>
       </div>
     );
