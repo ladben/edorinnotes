@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css'
 import FortuneWheel from './FortuneWheel';
+import Test from './Test';
 
 function App() {
 
@@ -83,7 +84,10 @@ function App() {
     //   <div className='randomize' onClick={() => {setSelectedPlayer(selectNextNoteTaker())}}>SORSOLJ!</div>
     //   <div className='next-note-taker'>Következő jegyzetelő: {selectedPlayer}</div>
     // </div>
-    <FortuneWheel />
+    <div>
+      {/* <FortuneWheel /> */}
+      <Test></Test>
+    </div>
   )
 }
 

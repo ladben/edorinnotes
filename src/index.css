@@ -3,13 +3,15 @@
 @tailwind utilities;
 
 :root {
-    --color-petra: #FB23A8;
-    --color-misi: #FD3033;
+    --color-petra: #E0218A;
+    --color-misi: #C50C0C;
     --color-roli: #00FFFF;
     --color-alex: #246309;
-    --color-javi: #FBAF23;
+    --color-javi: #F2CC0D;
 }
 
 body {
-    background: blue;
+    background-image: url('./assets/background.webp');
+    background-size: cover;
+    background-position: center;
 }
