@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 :root {
     --color-petra: #E0218A;
@@ -8,6 +11,7 @@
     --color-roli: #00FFFF;
     --color-alex: #246309;
     --color-javi: #F2CC0D;
+    --color-neutral: #1B2F31;
 }
 
 body {
@@ -15,3 +19,180 @@ body {
     background-size: cover;
     background-position: center;
 }
+
+img {
+    max-width: unset;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-family: "Inknut Antiqua", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* BACKGROUNDS - START */
+
+.bg-neutral {
+    background: var(--color-neutral, #1B2F31);
+}
+
+/* BACKGROUNDS - END */
+
+/* CONTAINER DISPLAY - START */
+
+.container {
+    margin: auto;
+    max-width: 100%;
+    padding: 0 10px;
+    color: white;
+}
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+        padding: 0 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        padding: 0 30px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+        padding: 0 50px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1536px;
+    }
+}
+
+/* CONTAINER DISPLAY - END */
+
+/* WIDTHS AND HEIGHTS - START */
+
+.w-100 {
+    width: 100%;
+}
+
+.w-100v {
+    width: 100vw;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.h-100v {
+    height: 100vh;
+}
+
+/* WIDTHS AND HEIGHTS - END */
+
+/* GRID DISPLAY - START */
+
+.grid {
+    display: grid;
+}
+
+.grid.column-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid.row-2 {
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.grid .span-column-2 {
+    grid-column-end: span 2;
+}
+
+.grid .span-row-2 {
+    grid-row-end: span 2;
+}
+
+/* GRID DISPLAY - END */
+
+/* FLEX DISPLAY - START */
+
+.flex {
+    display: flex;
+}
+
+.flex.row {
+    flex-direction: row;
+}
+
+.flex.column {
+    flex-direction: column;
+}
+
+.flex.justify-center {
+    justify-content: center;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.align-space-around {
+    align-items: space-around;
+}
+
+.flex.align-baseline {
+    align-items: baseline;
+}
+
+/* FLEX DISPLAY - END */
+
+/* GAPS - START */
+
+.gap-5 {
+    gap: 5px;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-100 {
+    gap: 100px;
+}
+
+/* GAPS - END */
+
+/* POSITIONS - START */
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.position-absolute.top-0 {
+    top: 0px;
+}
+
+.position-absolute.left-0 {
+    left: 0px;
+}
+
+/* POSITIONS - END */

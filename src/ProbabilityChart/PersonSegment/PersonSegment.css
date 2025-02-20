@@ -1,0 +1,16 @@
+.probability-chart-wrapper img {
+    width: 100px;
+}
+
+.probability-chart-wrapper .percentage-number {
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    bottom: 25px;
+    font-size: 24px;
+    color: var(--color-neutral);
+}
+
+.probability-chart-wrapper .chart {
+    transform: rotateY(180deg) rotate(-90deg);
+}

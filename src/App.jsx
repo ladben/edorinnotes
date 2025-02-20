@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css'
 import FortuneWheel from './FortuneWheel';
 import Test from './Test';
+import ProbabilityChart from './ProbabilityChart/ProbabilityChart';
 
 function App() {
 
@@ -74,7 +75,7 @@ function App() {
       }
     }
   }
-
+  
   return (
     // <div className='asd' style={{background: `conic-gradient(${backgroundExpArr})`}}>
     //   <div className='stats'>{resp.map((person, i) => (
@@ -84,9 +85,18 @@ function App() {
     //   <div className='randomize' onClick={() => {setSelectedPlayer(selectNextNoteTaker())}}>SORSOLJ!</div>
     //   <div className='next-note-taker'>Következő jegyzetelő: {selectedPlayer}</div>
     // </div>
-    <div>
-      {/* <FortuneWheel /> */}
-      <Test></Test>
+    // <div>
+    //   {/* <FortuneWheel /> */}
+    //   <Test></Test>
+    // </div>
+    <div className='container flex align-center w-100 h-100v'>
+      <div className='grid column-2 row-2 gap-100 w-100'>
+        <div className='probability-chart-wrapper'>
+          <ProbabilityChart />
+        </div>
+        <div className='fortune-wheel-wrapper span-row-2'>3</div>
+        <div className='display-and-controls-wrapper'>2</div>
+      </div>
     </div>
   )
 }
