@@ -15,4 +15,36 @@
 
 .display-and-controls-wrapper .controls-wrapper .btn-wrapper {
     padding: 5px;
+    width: 220px;
+    height: 100px;
+}
+
+/* rotating control buttons */
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper {
+    --perspective: 600px;
+    --rotated: 180deg;
+    --facing: 0deg;
+    --button-width: 10px;
+}
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper .top,
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper .bottom,
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper .front,
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper .back {
+    backface-visibility: hidden;
+    transition: transform 1s cubic-bezier(0.2, 0, 0.5, 1.7);
+}
+/* facing*/
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper .front {
+    transform: perspective(var(--perspective)) translateZ(calc(var(--button-width) / 2)) rotateX(var(--facing));
+}
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper .back {
+    transform: perspective(var(--perspective)) translateZ(calc(var(--button-width) / -2)) rotateX(var(--rotated));
+}
+
+/* rotated */
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper.rotated .front {
+    transform: perspective(var(--perspective)) translateZ(calc(var(--button-width) / 2)) rotateX(var(--rotated));
+}
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper.rotated .back {
+    transform: perspective(var(--perspective)) translateZ(calc(var(--button-width) / -2)) rotateX(var(--facing));
 }

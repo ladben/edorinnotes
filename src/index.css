@@ -33,6 +33,22 @@ img {
     font-style: normal;
 }
 
+.noclick {
+    pointer-events: none;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* DISPLAY - START */
+
+.d-none {
+    display: none;
+}
+
+/* DISPLAY - END */
+
 /* BACKGROUNDS - START */
 
 .bg-neutral {
