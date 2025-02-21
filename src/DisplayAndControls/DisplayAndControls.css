@@ -1,0 +1,18 @@
+.display-and-controls-wrapper .display-and-controls-panel {
+    padding: 25px 29px;
+    gap: 13px;
+}
+
+.display-and-controls-wrapper .display-wrapper {
+    height: 92px;
+    padding: 4px;
+    background-image: url('./assets/Display_background.svg');
+}
+
+.display-and-controls-wrapper .display-wrapper .display {
+    background-image: url('./assets/Display_pixel.svg');
+}
+
+.display-and-controls-wrapper .controls-wrapper .btn-wrapper {
+    padding: 5px;
+}

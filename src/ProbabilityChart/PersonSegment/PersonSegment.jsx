@@ -19,7 +19,7 @@ const PersonSegment = ({person}) => {
                 />
             </div>
             <div className='percentage-number position-absolute flex justify-center align-center'>
-                <p>{probability * 100}%</p>
+                <p>{Math.round(probability * 100)}%</p>
             </div>
         </div>
     );

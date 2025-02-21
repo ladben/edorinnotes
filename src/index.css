@@ -103,6 +103,10 @@ img {
     height: 100vh;
 }
 
+.w-max-content {
+    width: max-content;
+}
+
 /* WIDTHS AND HEIGHTS - END */
 
 /* GRID DISPLAY - START */
@@ -163,6 +167,10 @@ img {
 
 /* GAPS - START */
 
+.gap-4 {
+    gap: 4px;
+}
+
 .gap-5 {
     gap: 5px;
 }
@@ -171,11 +179,27 @@ img {
     gap: 10px;
 }
 
+.gap-12 {
+    gap: 12px;
+}
+
+.gap-40 {
+    gap: 40px;
+}
+
 .gap-100 {
     gap: 100px;
 }
 
 /* GAPS - END */
+
+/* MARGINS AND PADDINGS - START */
+
+.p-8 {
+    padding: 8px;
+}
+
+/* MARGINS AND PADDINGS - END */
 
 /* POSITIONS - START */
 

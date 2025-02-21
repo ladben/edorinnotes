@@ -8,7 +8,7 @@ const ProbabilityPieChart = ({data}) => {
               <defs>
                     <linearGradient id={`colorUv-${data[0].name}`} x1="1" y1="1" x2="0" y2="0">
                         <stop offset="0%" stopColor={data[0].startColor || "#FFFFFF"}/>
-                        <stop offset="100%" stopColor={data[0].endColor || "#FFFFFF"}/>
+                        <stop offset="100%" stopColor={data[0].endColor || "#656565"}/>
                     </linearGradient>
                 </defs>
             <Pie
