@@ -15,36 +15,24 @@ const FortuneWheel = ({people}) => {
             <Wheel />
             {people.map((person, index) => {
                 return (
-                    <>
+                    <React.Fragment key={`segment-fragment-${index}`}>
                         <Segment
                             className="position-absolute abs-center"
                             url={`url(#segment-image-pattern-${index})`}
+                            index={index}
+                            name={person.name}
                             color={person.color}
-                            style={{
-                                transform: `translate(-50%, -50%) rotate(${index * 36}deg)`
-                            }}
-                        >
-                            <defs>
-                                <pattern id={`segment-image-pattern-${index}`} patternUnits="userSpaceOnUse" width="392" height="170">
-                                    <image href={`./assets/profiles/${person.name}.webp`} x="111" y="0" width="170" height="170" />
-                                </pattern>
-                            </defs>
-                        </Segment>
+                            style={{transform: `translate(-50%, -50%) rotate(${index * 36}deg)`}}
+                        />
                         <Segment
                             className="position-absolute abs-center"
                             url={`url(#segment-image-pattern-${index})`}
+                            index={index}
+                            name={person.name}
                             color={person.color}
-                            style={{
-                                transform: `translate(-50%, -50%) rotate(${180 + index * 36}deg)`
-                            }}
-                        >
-                            <defs>
-                                <pattern id={`segment-image-pattern-${index}`} patternUnits="userSpaceOnUse" width="392" height="170">
-                                    <image href={`./assets/profiles/${person.name}.webp`} x="111" y="0" width="170" height="170" />
-                                </pattern>
-                            </defs>
-                        </Segment>
-                    </>
+                            style={{transform: `translate(-50%, -50%) rotate(${180 + index * 36}deg)`}}
+                        />
+                    </React.Fragment>
                 );
             })}
             <BorderLights className='position-absolute abs-center border-lights' />
