@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, Sector } from "recharts";
-import './FortuneWheel.css';
+import './TESTFortuneWheel.css';
 
 const data = [
     { name: "Petra", value: 0.6, color: "pink" },

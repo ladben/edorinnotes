@@ -203,6 +203,10 @@ img {
     gap: 40px;
 }
 
+.gap-50 {
+    gap: 50px;
+}
+
 .gap-100 {
     gap: 100px;
 }
@@ -231,8 +235,34 @@ img {
     top: 0px;
 }
 
+.position-absolute.bottom-0 {
+    bottom: 0px;
+}
+
+.position-absolute.bottom-min-4 {
+    bottom: -4px;
+}
+
 .position-absolute.left-0 {
     left: 0px;
 }
 
+.position-absolute.left-min-4 {
+    left: -4px;
+}
+
+.position-absolute.abs-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* POSITIONS - END */
+
+/* TRANSFORMS - START */
+
+.scale-8 {
+    transform: scale(0.6);
+}
+
+/* TRANSFORMS - END */

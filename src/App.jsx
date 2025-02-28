@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import './App.css'
-import FortuneWheel from './FortuneWheel';
+import TESTFortuneWheel from './TESTFortuneWheel';
 import Test from './Test';
 import ProbabilityChart from './ProbabilityChart/ProbabilityChart';
 import DisplayAndControls from './DisplayAndControls/DisplayAndControls';
+import FortuneWheel from './FortuneWheel/FortuneWheel';
 
 function App() {
 
@@ -14,31 +15,36 @@ function App() {
       name: "Petra",
       notesWritten: 1,
       startColor: "#E0218A",
-      endColor: "#861352"
+      endColor: "#861352",
+      color: "#E0218A"
     },
     {
       name: "Roli",
       notesWritten: 1,
       startColor: "#00FFFF",
-      endColor: "#009999"
+      endColor: "#009999",
+      color: "#00FFFF"
     },
     {
       name: "Alex",
       notesWritten: 1,
       startColor: "#44BB11",
-      endColor: "#246309"
+      endColor: "#246309",
+      color: "#246309"
     },
     {
       name: "Misi",
       notesWritten: 0,
       startColor: "#F22727",
-      endColor: "#C50C0C"
+      endColor: "#C50C0C",
+      color: "#C50C0C"
     },
     {
       name: "Javi",
       notesWritten: 0,
       startColor: "#F2CC0D",
-      endColor: "#A98F09"
+      endColor: "#A98F09",
+      color: "#F2CC0D"
     }
   ];
 
@@ -92,15 +98,17 @@ function App() {
     //   <div className='next-note-taker'>Következő jegyzetelő: {selectedPlayer}</div>
     // </div>
     // <div>
-    //   {/* <FortuneWheel /> */}
+    //   {/* <TESTFortuneWheel /> */}
     //   <Test></Test>
     // </div>
     <div className='container flex justify-center align-center w-100 h-100v'>
-      <div className='grid column-2 row-2 gap-100'>
+      <div className='grid column-2 row-2 gap-50'>
         <div className='probability-chart-wrapper'>
           <ProbabilityChart probabilities={probabilities} />
         </div>
-        <div className='fortune-wheel-wrapper span-row-2'>3</div>
+        <div className='fortune-wheel-wrapper span-row-2 flex justify-center align-center'>
+          <FortuneWheel people={resp.map(({name, color}) => ({name, color}))} />
+        </div>
         <div className='display-and-controls-wrapper'>
           <DisplayAndControls />
         </div>

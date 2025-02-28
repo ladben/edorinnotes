@@ -1,0 +1,9 @@
+.fortune-wheel-wrapper .fortune-wheel-container {
+    width: 546px;
+    height: 546px;
+}
+
+.fortune-wheel-wrapper .border-lights .light-on {
+    opacity: 0;
+    transition: opacity 100ms ease-in-out;
+}
