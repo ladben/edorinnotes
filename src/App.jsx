@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import './App.css'
-import TESTFortuneWheel from './TESTFortuneWheel';
-import Test from './Test';
+// import TESTFortuneWheel from './TESTFortuneWheel';
+// import Test from './Test';
 import ProbabilityChart from './ProbabilityChart/ProbabilityChart';
 import DisplayAndControls from './DisplayAndControls/DisplayAndControls';
 import FortuneWheel from './FortuneWheel/FortuneWheel';
 
 function App() {
 
-  const [selectedPlayer, setSelectedPlayer] = useState('');
+  // const [selectedPlayer, setSelectedPlayer] = useState('');
   const [lightsAnimation, setLightsAnimation] = useState('none');
 
   const resp = [
@@ -77,17 +77,17 @@ function App() {
     currChance += 360 * probability.probability;
   });
 
-  const selectNextNoteTaker = () => {
-    const random = Math.random();
-    let cumulativeProbability = 0;
+  // const selectNextNoteTaker = () => {
+  //   const random = Math.random();
+  //   let cumulativeProbability = 0;
 
-    for (let player of probabilities) {
-      cumulativeProbability += player.probability;
-      if (random < cumulativeProbability) {
-        return player.name;
-      }
-    }
-  }
+  //   for (let player of probabilities) {
+  //     cumulativeProbability += player.probability;
+  //     if (random < cumulativeProbability) {
+  //       return player.name;
+  //     }
+  //   }
+  // }
   
   return (
     // <div className='asd' style={{background: `conic-gradient(${backgroundExpArr})`}}>
