@@ -9,6 +9,7 @@ import FortuneWheel from './FortuneWheel/FortuneWheel';
 function App() {
 
   const [selectedPlayer, setSelectedPlayer] = useState('');
+  const [lightsAnimation, setLightsAnimation] = useState('none');
 
   const resp = [
     {
@@ -103,14 +104,17 @@ function App() {
     // </div>
     <div className='container flex justify-center align-center w-100 h-100v'>
       <div className='grid column-2 row-2 gap-50'>
-        <div className='probability-chart-wrapper'>
+        <div className='probability-chart-wrapper mt-auto'>
           <ProbabilityChart probabilities={probabilities} />
         </div>
         <div className='fortune-wheel-wrapper span-row-2 flex justify-center align-center'>
-          <FortuneWheel people={resp.map(({name, color}) => ({name, color}))} />
+          <FortuneWheel
+            people={resp.map(({name, color}) => ({name, color}))}
+            lightsAnimation={lightsAnimation}
+          />
         </div>
         <div className='display-and-controls-wrapper'>
-          <DisplayAndControls />
+          <DisplayAndControls setLightsAnimation={setLightsAnimation}/>
         </div>
       </div>
     </div>

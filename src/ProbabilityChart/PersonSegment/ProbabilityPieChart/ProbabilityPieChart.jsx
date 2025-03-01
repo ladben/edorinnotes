@@ -13,6 +13,7 @@ const ProbabilityPieChart = ({data}) => {
                 </defs>
             <Pie
                 data={data}
+                dataKey="value"
                 cx="50%"
                 cy="50%"
                 innerRadius={35}

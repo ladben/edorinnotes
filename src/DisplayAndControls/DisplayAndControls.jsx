@@ -10,7 +10,7 @@ import SaveBack from './assets/Save_back.svg?react';
 import SaveFront from './assets/Save_front.svg?react';
 import SaveFrontPressed from './assets/Save_front_pressed.svg?react';
 
-const DisplayAndControls = () => {
+const DisplayAndControls = ({setLightsAnimation}) => {
     const [isRotated, setIsRotated] = useState(true);
 
     const rerollBtnRef = useRef(null);
@@ -41,7 +41,17 @@ const DisplayAndControls = () => {
     return (
         <div className='position-relative'>
             <div className='display-and-controls-panel flex column'>
-                <div className='display-wrapper cursor-pointer' onClick={onRotate}>
+                <div className='display-wrapper cursor-pointer' onClick={() => {
+                    onRotate();
+                    setLightsAnimation((prevState) => {
+                        if (prevState === 'allAround') {
+                            return 'none';
+                        }
+                        if (prevState === 'none') {
+                            return 'allAround'
+                        }
+                    });
+                }}>
                     <div className='display w-100 h-100 position-relative'>
                         <Display text="sorsolj!" />
                     </div>
