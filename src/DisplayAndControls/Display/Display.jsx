@@ -16,7 +16,6 @@ const Display = ({text}) => {
             const leftOffset = leftRowNum * 8;
             textRef.current.style.left = `${leftOffset}px`;
         }
-        console.log(textRef.current.getBoundingClientRect());
     }, [text]);
 
     const TextDisplay = ({text}) => {

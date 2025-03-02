@@ -5,7 +5,6 @@ const useFortuneWheelLightAnimation = () => {
   let timeouts = useRef([]);
 
   const clearAnimation = (lights) => {
-    console.log('clear animation ran with ', lights);
     if (stepInterval.current) {
       clearInterval(stepInterval.current);
       stepInterval.current = null;
@@ -18,12 +17,10 @@ const useFortuneWheelLightAnimation = () => {
   const animations = {};
 
   const none = (lights) => {
-    console.log('hook none: ', lights);
+    return lights
   }
 
   const allAround = (lights) => {
-    console.log('hook allAround: ', lights);
-
     if (!Array.isArray(lights) || lights.length !== 16) {
       console.error("Expected an array with exactly 16 elements.");
       return;

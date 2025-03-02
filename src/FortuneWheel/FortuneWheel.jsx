@@ -8,24 +8,34 @@ import Segment from './Segment/Segment';
 import { useEffect, useRef } from 'react';
 import useFortuneWheelLightAnimation from '../customHooks/useFortuneWheelLightAnimation';
 
-const FortuneWheel = ({people, lightsAnimation}) => {
+const FortuneWheel = ({people, lightsAnimation, selectedPlayer}) => {
     
     const lightsRef = useRef(null);
+    const arrowRef = useRef(null);
     const animations = useFortuneWheelLightAnimation();
-
+    
     useEffect(() => {
-        console.log('lightsRef.current: ', lightsRef.current);
-        console.log('lightsAnimation: ', lightsAnimation);
-        console.log('animations: ', animations);
-
         if (!lightsAnimation || !animations[lightsAnimation] || !lightsRef.current) {
             return;
         }
-
+        
         const lights = Array.from(lightsRef.current.querySelectorAll('.light-on'));
         animations.clearAnimation(lights);
         animations[lightsAnimation](lights);
     }, [lightsAnimation, animations]);
+    
+    useEffect(() => {
+        let rotation = 0;
+        const playerSegment = selectedPlayer.id * 36;
+        const offsetPlayerSegment = playerSegment - 13;
+        const randomizedPlayerSegmentPosition = offsetPlayerSegment + Math.random() * 26;
+        const randomizedRotation = randomizedPlayerSegmentPosition + Math.round(Math.random()) * 180;
+
+        rotation = 3600 + randomizedRotation;
+        if (arrowRef.current) {
+            arrowRef.current.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`
+        }
+    }, [selectedPlayer]);
 
     return (
         <div className='fortune-wheel-container position-relative'>
@@ -76,7 +86,14 @@ const FortuneWheel = ({people, lightsAnimation}) => {
                 }}
             >
                 <BorderLights className='position-absolute abs-center border-lights' ref={lightsRef}/>
-                <div style={{width: '60px', height: '60px'}} className='position-absolute abs-center flex'>
+                <div
+                    style={{
+                        width: '60px',
+                        height: '60px',
+                    }}
+                    className='position-absolute abs-center flex arrow-wrapper'
+                    ref={arrowRef}
+                >
                     <Arrow className='position-absolute bottom-min-4 left-min-4' />
                 </div>
             </div>

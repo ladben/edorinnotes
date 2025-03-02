@@ -10,7 +10,7 @@ import SaveBack from './assets/Save_back.svg?react';
 import SaveFront from './assets/Save_front.svg?react';
 import SaveFrontPressed from './assets/Save_front_pressed.svg?react';
 
-const DisplayAndControls = ({setLightsAnimation}) => {
+const DisplayAndControls = ({setLightsAnimation, selectedPlayer, selectNextNoteTaker}) => {
     const [isRotated, setIsRotated] = useState(true);
 
     const rerollBtnRef = useRef(null);
@@ -51,9 +51,10 @@ const DisplayAndControls = ({setLightsAnimation}) => {
                             return 'allAround'
                         }
                     });
+                    selectNextNoteTaker();
                 }}>
                     <div className='display w-100 h-100 position-relative'>
-                        <Display text="sorsolj!" />
+                        <Display text={selectedPlayer?.name || "sorsolj!"} />
                     </div>
                 </div>
                 <div className='controls-wrapper flex justify-center gap-40'>

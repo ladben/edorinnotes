@@ -10,3 +10,7 @@
 .fortune-wheel-wrapper .border-lights .light-on.active {
     opacity: 1;
 }
+
+.fortune-wheel-wrapper .arrow-wrapper {
+    transition: transform 10s cubic-bezier(0.2, 0, 0, 1.02);
+}
