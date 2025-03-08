@@ -35,6 +35,20 @@ const FortuneWheel = ({people, lightsAnimation, selectedPlayer}) => {
         if (arrowRef.current) {
             arrowRef.current.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`
         }
+
+        const rotationTimeout = setTimeout(() => {
+            arrowRef.current.style.transition = 'none';
+            arrowRef.current.style.transform = `translate(-50%, -50%) rotate(${randomizedRotation}deg)`;
+        }, 10200);
+
+        const rotationTransitionTimeout = setTimeout(() => {
+            arrowRef.current.style.removeProperty("transition"); 
+        }, 10250);
+
+        return () => {
+            clearTimeout(rotationTimeout);
+            clearTimeout(rotationTransitionTimeout);
+        };
     }, [selectedPlayer]);
 
     return (

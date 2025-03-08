@@ -18,9 +18,11 @@ const DisplayAndControls = ({setLightsAnimation, selectedPlayer, selectNextNoteT
     const saveBtnRef = useRef(null);
     const isRotatedTimeoutRef = useRef(null);
 
+    // with 10s delay: set display name and lights allUp after player is selected
     useEffect(() => {
         const selectedPlayerTimeout = setTimeout(() => {
             setSelectedPlayerName(selectedPlayer?.name);
+            setLightsAnimation("allUp");
         }, 10000);
 
         return () => clearTimeout(selectedPlayerTimeout);

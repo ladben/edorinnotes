@@ -50,9 +50,16 @@ const useFortuneWheelLightAnimation = () => {
     }, 60);
   }
 
+  const allUp = (lights) => {
+    lights.forEach((light) => {
+      light.classList.add('active');
+    });
+  }
+
   animations.clearAnimation = clearAnimation;
   animations.none = none;
   animations.allAround = allAround;
+  animations.allUp = allUp;
 
   return animations;
 }
