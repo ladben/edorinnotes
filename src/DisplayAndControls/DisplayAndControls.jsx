@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Display from './Display/Display';
 import './DisplayAndControls.css';
 
@@ -12,11 +12,38 @@ import SaveFrontPressed from './assets/Save_front_pressed.svg?react';
 
 const DisplayAndControls = ({setLightsAnimation, selectedPlayer, selectNextNoteTaker}) => {
     const [isRotated, setIsRotated] = useState(true);
+    const [selectedPlayerName, setSelectedPlayerName] = useState(null);
 
     const rerollBtnRef = useRef(null);
     const saveBtnRef = useRef(null);
+    const isRotatedTimeoutRef = useRef(null);
 
-    const onRotate = () => setIsRotated((rotated) => !rotated);
+    useEffect(() => {
+        const selectedPlayerTimeout = setTimeout(() => {
+            setSelectedPlayerName(selectedPlayer?.name);
+        }, 10000);
+
+        return () => clearTimeout(selectedPlayerTimeout);
+    },[selectedPlayer]);
+
+    useEffect(() => {
+        return () => {
+          if (isRotatedTimeoutRef.current) {
+            clearTimeout(isRotatedTimeoutRef.current);
+          }
+        };
+      }, []);
+
+    const onRotate = () => {
+        if (isRotatedTimeoutRef.current) {
+            clearTimeout(isRotatedTimeoutRef.current);
+        }
+        
+        isRotatedTimeoutRef.current = setTimeout(() => {
+            setIsRotated((rotated) => !rotated);
+        }, 10000);
+    };
+
     const onMouseDown = (button) => {
         if (button === "reroll") {
             rerollBtnRef.current?.querySelector('.front')?.classList.add('d-none');
@@ -38,23 +65,25 @@ const DisplayAndControls = ({setLightsAnimation, selectedPlayer, selectNextNoteT
         }
     };
 
+    const onDisplayClick = () => {
+        onRotate();
+        setLightsAnimation((prevState) => {
+            if (prevState === 'allAround') {
+                return 'none';
+            }
+            if (prevState === 'none') {
+                return 'allAround'
+            }
+        });
+        selectNextNoteTaker();
+    }
+
     return (
         <div className='position-relative'>
             <div className='display-and-controls-panel flex column'>
-                <div className='display-wrapper cursor-pointer' onClick={() => {
-                    onRotate();
-                    setLightsAnimation((prevState) => {
-                        if (prevState === 'allAround') {
-                            return 'none';
-                        }
-                        if (prevState === 'none') {
-                            return 'allAround'
-                        }
-                    });
-                    selectNextNoteTaker();
-                }}>
+                <div className='display-wrapper cursor-pointer' onClick={isRotated ? onDisplayClick : () => {}}>
                     <div className='display w-100 h-100 position-relative'>
-                        <Display text={selectedPlayer?.name || "sorsolj!"} />
+                        <Display text={selectedPlayerName || "sorsolj!"} />
                     </div>
                 </div>
                 <div className='controls-wrapper flex justify-center gap-40'>
