@@ -60,6 +60,8 @@ const DisplayAndControls = ({setLightsAnimation, selectedPlayer, selectNextNoteT
         if (button === "reroll") {
             rerollBtnRef.current?.querySelector('.front')?.classList.remove('d-none');
             rerollBtnRef.current?.querySelector('.front.pressed')?.classList.add('d-none');
+            setLightsAnimation("allAround");
+            selectNextNoteTaker();
         }
         if (button === "save") {
             saveBtnRef.current?.querySelector('.front')?.classList.remove('d-none');
@@ -69,14 +71,7 @@ const DisplayAndControls = ({setLightsAnimation, selectedPlayer, selectNextNoteT
 
     const onDisplayClick = () => {
         onRotate();
-        setLightsAnimation((prevState) => {
-            if (prevState === 'allAround') {
-                return 'none';
-            }
-            if (prevState === 'none') {
-                return 'allAround'
-            }
-        });
+        setLightsAnimation("allAround");
         selectNextNoteTaker();
     }
 

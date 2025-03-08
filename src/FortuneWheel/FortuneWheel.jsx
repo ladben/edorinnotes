@@ -9,6 +9,9 @@ import { useEffect, useRef } from 'react';
 import useFortuneWheelLightAnimation from '../customHooks/useFortuneWheelLightAnimation';
 
 const FortuneWheel = ({people, lightsAnimation, selectedPlayer}) => {
+
+    console.log('HELOKA lightsAnimation: ', lightsAnimation);
+    console.log('HELOKA selectedPlayer: ', selectedPlayer);
     
     const lightsRef = useRef(null);
     const arrowRef = useRef(null);
@@ -43,7 +46,7 @@ const FortuneWheel = ({people, lightsAnimation, selectedPlayer}) => {
 
         const rotationTransitionTimeout = setTimeout(() => {
             arrowRef.current.style.removeProperty("transition"); 
-        }, 10250);
+        }, 10500);
 
         return () => {
             clearTimeout(rotationTimeout);
